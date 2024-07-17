@@ -1,3 +1,4 @@
+
 ### Exercício de React Native: Criando Componentes Reutilizáveis ✨
 
 #### Objetivo:
@@ -11,7 +12,7 @@ Criar três componentes reutilizáveis em arquivos separados e utilizá-los no `
    npx create-expo-app MeuProjeto --template blank
    cd MeuProjeto
    npx expo start (ou npx expo start --tunnel)
-  ```
+   ```
 
 #### Passo 2: Criar os Componentes Reutilizáveis 🔄
 
@@ -29,6 +30,7 @@ Criar três componentes reutilizáveis em arquivos separados e utilizá-los no `
    - **Props sugeridas:**
      - `placeholder` (para o texto de ajuda dentro do campo)
      - `value` (para o valor do campo)
+     - `onChangeText` (para a função a ser executada quando o texto é alterado)
    - **Estilo sugerido:** O campo de entrada deve ter uma borda, padding interno e largura total.
 
 3. **Componente Card:**
@@ -40,7 +42,7 @@ Criar três componentes reutilizáveis em arquivos separados e utilizá-los no `
    - **Estilo sugerido:** O cartão deve ter uma borda, sombra e padding interno.
 
 #### Passo 3: Chamar os Componentes no `App.js` 📲
-1. Importe e utilize os componentes `Button`, `Input` e `Card` no arquivo `App.js`.
+1. Importe e utilize os componentes `Botao`, `Input` e `Card` no arquivo `App.js`.
 2. Organize-os de maneira a demonstrar a reutilização de cada componente com diferentes props.
 
 ### Dicas 💡
@@ -49,3 +51,4 @@ Criar três componentes reutilizáveis em arquivos separados e utilizá-los no `
 - Utilize `View` e `Text` para estruturar o componente de cartão.
 - Utilize `StyleSheet` para estilizar os componentes.
 - Teste seu aplicativo frequentemente para garantir que os componentes estão sendo exibidos corretamente.
+
