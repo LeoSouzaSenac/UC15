@@ -1,29 +1,31 @@
-# Galio Framework
-<a href="https://galio.io/" target="_blank">Galio Framework</a>
-[Galio Framework](https://galio.io/) é um conjunto de componentes de UI bonitos e personalizáveis para React Native.
+# ReactNativePaper Framework
+[React Native Paper Framework]([https://galio.io/](https://callstack.github.io/react-native-paper/) 
+
 
 ## Instalação
-Para instalar o Galio Framework, use o npm:
+Para instalar o ReactNativePaper Framework, use o npm:
 
 ```bash
-npm install galio-framework
+npm install react-native-paper 
+npm install react-native-safe-area-context 
 ```
 
 ## Exemplo de código
 ```javascript
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-// Importa componentes do Galio Framework
-import { Button, Text } from 'galio-framework';
+import { Provider as PaperProvider, Button, Text } from 'react-native-paper';
+import { View, StyleSheet } from 'react-native';
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      {/* Componente de texto do Galio, com um estilo de cabeçalho */}
-      <Text h4>Welcome to Galio</Text>
-      {/* Componente de botão do Galio, com estilo arredondado e cor de informação */}
-      <Button round size="small" color="info">Click Me</Button>
-    </View>
+    <PaperProvider>
+      <View style={styles.container}>
+        {/* Componente de texto do React Native Paper com estilo de título pequeno */}
+        <Text variant="headlineSmall">Welcome to React Native Paper</Text>
+        {/* Componente de botão do React Native Paper, com estilo de botão contido */}
+        <Button mode="contained" onPress={() => console.log('Pressed')}>Click Me</Button>
+      </View>
+    </PaperProvider>
   );
 }
 
@@ -36,4 +38,5 @@ const styles = StyleSheet.create({
 });
 
 export default App;
+
 ```
