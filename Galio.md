@@ -1,5 +1,5 @@
 # Galio Framework
-<a href="https://galio.io/" target="_blank">Galio Framework</a>
+[Galio Framework](https://galio.io/) é um conjunto de componentes de UI bonitos e personalizáveis para React Native.
 
 
 ## Instalação
