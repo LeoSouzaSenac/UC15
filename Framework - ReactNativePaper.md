@@ -10,6 +10,24 @@ npm install react-native-paper
 npm install react-native-safe-area-context 
 ```
 
+## Edite o arquivo `babel.config.js`:
+
+```javascript
+module.exports = function(api) {
+  api.cache(true);
+  return {
+    presets: ['babel-preset-expo'],
+    env: {
+      production: {
+        plugins: ['react-native-paper/babel'],
+      },
+    },
+  };
+};
+
+```
+
+
 ## Exemplo de código
 ```javascript
 import React from 'react';
