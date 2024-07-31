@@ -6,6 +6,7 @@
 Para instalar o Kitten UI Framework, use o npm e o expo install:
 
 ```bash
+npm i @ui-kitten/components @eva-design/eva react-native-svg
 npm i @ui-kitten/components @eva-design/eva
 expo install react-native-svg@9.13.6
 ```
