@@ -32,85 +32,114 @@ Crie um novo projeto React ou abra um existente.
 
 #### Passo 2: Código do Componente
 
-Crie um novo arquivo `Buscador.js` e adicione o seguinte código:
+Crie um novo arquivo `Posts.js` e adicione o seguinte código:
 
 ```jsx
+// Importações necessárias do React e outras bibliotecas
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, ActivityIndicator, StyleSheet } from 'react-native';
+import axios from 'axios';
 
-const Buscador = () => {
-  // Estado para armazenar os dados da API
-  const [dados, setDados] = useState([]);
-  // Estado para armazenar o estado de carregamento
-  const [carregando, setCarregando] = useState(true);
+const Posts = () => {
+  // Definindo estados para armazenar dados, status de carregamento e erros
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Função para buscar dados da API
-  const buscarDados = async () => {
-    try {
-      const resposta = await fetch('https://api.exemplo.com/dados');
-      const resultado = await resposta.json();
-      setDados(resultado);
-    } catch (erro) {
-      console.error('Erro ao buscar dados:', erro);
-    } finally {
-      setCarregando(false);
-    }
-  };
-
-  // O efeito é executado apenas uma vez após a montagem do componente
+  // useEffect para buscar dados da API quando o componente for montado
   useEffect(() => {
-    buscarDados();
-  }, []);
+    // Função assíncrona para buscar dados
+    const fetchData = async () => {
+      try {
+        // Fazendo a requisição para a API
+        const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
+        // Armazenando os dados recebidos no estado
+        setData(response.data);
+      } catch (error) {
+        // Armazenando a mensagem de erro no estado, se ocorrer um erro
+        setError(error.message);
+      } finally {
+        // Atualizando o estado de carregamento para falso
+        setLoading(false);
+      }
+    };
 
+    // Chamando a função fetchData
+    fetchData();
+  }, []); // Array vazio significa que o efeito roda apenas uma vez, similar ao componentDidMount
+
+  // Renderizando um indicador de carregamento enquanto os dados são buscados
+  if (loading) {
+    return <ActivityIndicator size="large" color="#0000ff" />;
+  }
+
+  // Renderizando uma mensagem de erro, se ocorrer um erro
+  if (error) {
+    return <Text style={styles.error}>Erro: {error}</Text>;
+  }
+
+  // Renderizando a lista de posts quando os dados são carregados com sucesso
   return (
     <View style={styles.container}>
-      {carregando ? (
-        <Text>Carregando...</Text>
-      ) : (
-        dados.map((item, index) => (
-          <Text key={index} style={styles.item}>
-            {item.nome}
-          </Text>
-        ))
-      )}
+      <Text style={styles.title}>Posts</Text>
+      {data.map(post => (
+        <View key={post.id} style={styles.post}>
+          <Text style={styles.postTitle}>{post.title}</Text>
+          <Text style={styles.postBody}>{post.body}</Text>
+        </View>
+      ))}
     </View>
   );
 };
 
+// Estilos para o componente
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    padding: 20,
   },
-  item: {
-    fontSize: 18,
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
     marginBottom: 10,
+  },
+  post: {
+    marginBottom: 20,
+  },
+  postTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  postBody: {
+    fontSize: 16,
+  },
+  error: {
+    color: 'red',
   },
 });
 
-export default Buscador;
+export default Posts;
+
 ```
 
-### Explicação do Código
+# Explicação do Código
 
-1. **Importações**: Importamos `React`, `useState`, `useEffect`, e alguns componentes do `react-native`.
-2. **Definição do Componente**: O componente `Buscador` usa o `useState` para criar estados para os dados da API e para o carregamento.
-3. **Função de Buscar Dados**: `buscarDados` é uma função assíncrona que faz uma chamada para uma API, atualiza o estado com os dados retornados e define o estado de carregamento.
-4. **Efeito com `useEffect`**: O `useEffect` chama a função `buscarDados` apenas uma vez, após a montagem do componente, devido à lista de dependências vazia.
-5. **Renderização Condicional**: O componente exibe "Carregando..." enquanto os dados estão sendo carregados e, após o carregamento, exibe a lista de itens.
+1. **Importações**: Importamos `React`, `useState`, `useEffect`, e alguns componentes do `react-native` e `axios`.
+2. **Definição do Componente**: O componente `Posts` usa o `useState` para criar estados para os dados da API, o carregamento e possíveis erros.
+3. **Função de Buscar Dados**: `fetchData` é uma função assíncrona que faz uma chamada para uma API, atualiza o estado com os dados retornados, define o estado de carregamento e trata possíveis erros.
+4. **Efeito com `useEffect`**: O `useEffect` chama a função `fetchData` apenas uma vez, após a montagem do componente, devido à lista de dependências vazia.
+5. **Renderização Condicional**: O componente exibe um `ActivityIndicator` enquanto os dados estão sendo carregados, exibe uma mensagem de erro caso ocorra algum problema, e, após o carregamento, exibe a lista de posts.
 
 ### Testando o Componente
 
-Para testar o componente `Buscador`, você deve incluí-lo em seu aplicativo principal, como `App.js`:
+Para testar o componente `Posts`, você deve incluí-lo em seu aplicativo principal, como `App.js`:
 
 ```jsx
 import React from 'react';
-import Buscador from './Buscador';
+import Posts from './Posts';
 
 const App = () => {
   return (
-    <Buscador />
+    <Posts />
   );
 };
 
