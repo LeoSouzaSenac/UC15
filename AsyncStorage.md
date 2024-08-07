@@ -1,4 +1,4 @@
-# Tutorial: Usando AsyncStorage no React Native
+# Usando AsyncStorage no React Native
 
 ## O que é o AsyncStorage?
 
