@@ -29,6 +29,10 @@ Vamos criar um exemplo simples que usa o `useEffect` para buscar dados de uma AP
 #### Passo 1: Configuração Inicial
 
 Crie um novo projeto React ou abra um existente.
+Instale a biblioteca Axios, usada para fazer requisições HTTP de forma simples e eficiente.
+```bash
+npm install axios
+```
 
 #### Passo 2: Código do Componente
 
