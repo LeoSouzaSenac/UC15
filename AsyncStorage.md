@@ -72,7 +72,7 @@ Crie um novo arquivo `Armazenamento.js` e adicione o seguinte código:
 
 ```jsx
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Armazenamento = () => {
@@ -83,7 +83,8 @@ const Armazenamento = () => {
   const salvarNome = async () => {
     try {
       await AsyncStorage.setItem('nome', nome);
-      alert('Nome salvo com sucesso!');
+      setNomeArmazenado(nome); // Atualizar o estado nomeArmazenado
+      Alert.alert('Sucesso', 'Nome salvo com sucesso!');
     } catch (erro) {
       console.error('Erro ao salvar o nome:', erro);
     }
@@ -105,8 +106,8 @@ const Armazenamento = () => {
   const removerNome = async () => {
     try {
       await AsyncStorage.removeItem('nome');
-      setNomeArmazenado('');
-      alert('Nome removido com sucesso!');
+      setNomeArmazenado(''); // Limpar o estado nomeArmazenado
+      Alert.alert('Sucesso', 'Nome removido com sucesso!');
     } catch (erro) {
       console.error('Erro ao remover o nome:', erro);
     }
@@ -154,6 +155,7 @@ const styles = StyleSheet.create({
 });
 
 export default Armazenamento;
+
 ```
 
 ### Explicação do Código
