@@ -98,6 +98,6 @@ A Chuck Norris Jokes API é uma API pública que retorna piadas aleatórias sobr
 
 ---
 
-# Se Desafia a Ir Além!
+# Deixa de preguiça e vai além:
 
 Minha sugestão é fazer um app de previsão do tempo bem maneiro usando a API do [OpenWeatherMap](https://openweathermap.org/current#name). Com essa API, você pode obter informações sobre o clima em qualquer cidade do mundo, incluindo temperatura, condições climáticas, umidade, e muito mais. Este desafio permitirá que você trabalhe com dados em tempo real e crie uma interface interativa que pode ser útil no dia a dia dos usuários.
