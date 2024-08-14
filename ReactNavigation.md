@@ -384,12 +384,3 @@ npx expo start
 ```
 
 Agora, você verá um menu de gaveta que pode ser aberto deslizando a partir da borda esquerda da tela ou tocando no botão de menu, exibindo as opções "Home" e "Profile".
-
----
-
-Esses projetos mostram como implementar e usar Tab Navigation e Drawer Navigation no React Native, permitindo criar interfaces intuitivas e organizadas para seu aplicativo.
-```
-
-## Conclusão
-
-O React Navigation oferece uma variedade de métodos para gerenciar a navegação em aplicativos React Native, cada um adequado para diferentes cenários de uso. Com Stack, Tab e Drawer Navigation, você pode criar interfaces de usuário intuitivas e eficientes, otimizando a experiência do usuário de acordo com as necessidades do seu aplicativo.
