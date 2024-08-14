@@ -13,7 +13,7 @@ O projeto será dividido em várias telas e componentes:
 4. **`HomeScreen.js`** - Tela acessível após login.
 5. **`ProfileScreen.js`** - Tela de perfil acessível após login.
 6. **`PublicScreen.js`** - Tela pública antes do login.
-7. **`PrivateScreen.js`** - Tela acessível após login.
+
 
 ## Código e Explicação
 
@@ -31,7 +31,7 @@ import SignupScreen from './screens/SignupScreen'; // Importa a tela de Cadastro
 import HomeScreen from './screens/HomeScreen'; // Importa a tela principal da aplicação.
 import ProfileScreen from './screens/ProfileScreen'; // Importa a tela de Perfil do usuário.
 import PublicScreen from './screens/PublicScreen'; // Importa a tela pública (visível antes do login).
-import PrivateScreen from './screens/PrivateScreen'; // Importa a tela privada (visível após o login).
+
 
 // Cria uma pilha de navegação para as telas de autenticação (login, cadastro, etc.).
 const AuthStack = createNativeStackNavigator();
@@ -403,51 +403,6 @@ const styles = StyleSheet.create({
 
 **Explicação:**
 - Navegação para a tela de login.
-
-### 7. `PrivateScreen.js`
-
-Tela acessível após login. Esta tela não foi detalhada anteriormente, mas segue o mesmo padrão.
-
-```javascript
-import * as React from 'react'; // Importa o React para usar seus componentes e hooks.
-import { View, Text, Button, StyleSheet } from 'react-native'; // Importa os componentes necessários do React Native: View, Text, Button e StyleSheet.
-
-export default function PrivateScreen({ navigation }) {
-  // Função principal do componente PrivateScreen, que recebe props para navegação.
-
-  return (
-    <View style={styles.container}>
-      {/* Container principal que organiza o layout dos filhos */}
-      <Text style={styles.header}>Private Screen</Text>
-      {/* Exibe o título "Private Screen" com o estilo definido no StyleSheet */}
-
-      <Button
-        title="Go to Home"
-        onPress={() => navigation.navigate('Home')}
-        // Botão para navegar para a tela "Home". Quando pressionado, chama a função navigation.navigate
-        // com o nome da tela para a qual deve navegar.
-      />
-    </View>
-  );
-}
-
-// Define os estilos para o componente usando StyleSheet
-const styles = StyleSheet.create({
-  container: {
-    flex: 1, // Faz o componente ocupar todo o espaço disponível.
-    alignItems: 'center', // Alinha os itens horizontalmente no centro.
-    justifyContent: 'center', // Alinha os itens verticalmente no centro.
-  },
-  header: {
-    fontSize: 24, // Define o tamanho da fonte do texto.
-    marginBottom: 20, // Adiciona uma margem abaixo do texto.
-  },
-});
-
-```
-
-**Explicação:**
-- Similar às outras telas, mas usada para navegação privada.
 
 ## Conclusão
 
