@@ -134,24 +134,44 @@ Agora, vamos criar um exemplo simples de navegação entre duas telas usando Sta
 No arquivo `App.js`, configure o navegador de pilha (Stack Navigator):
 
 ```javascript
+// Importa todas as funcionalidades da biblioteca React
 import * as React from 'react';
+// Importa o componente NavigationContainer da biblioteca @react-navigation/native
+// O NavigationContainer é responsável por gerenciar o estado da navegação e ligar o aplicativo à estrutura de navegação.
 import { NavigationContainer } from '@react-navigation/native';
+// Importa o método createNativeStackNavigator da biblioteca @react-navigation/native-stack
+// O createNativeStackNavigator é usado para criar um navegador de pilha (stack navigator), que permite a navegação entre telas.
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+// Importa o componente HomeScreen do arquivo HomeScreen.js
+// Este componente representa a tela inicial do aplicativo.
 import HomeScreen from './HomeScreen';
+// Importa o componente DetailsScreen do arquivo DetailsScreen.js
+// Este componente representa a tela de detalhes, que pode ser acessada a partir da tela inicial.
 import DetailsScreen from './DetailsScreen';
 
+// Cria uma instância do stack navigator usando createNativeStackNavigator
+// O Stack é usado para definir as telas que serão gerenciadas pelo navegador de pilha.
 const Stack = createNativeStackNavigator();
 
+// Função principal do aplicativo que será exportada como padrão
 export default function App() {
   return (
+    // O NavigationContainer encapsula todo o aplicativo e fornece o contexto de navegação
     <NavigationContainer>
+      {/* O Stack.Navigator é usado para definir a estrutura de navegação entre as telas.
+          O initialRouteName especifica a tela que será exibida inicialmente. */}
       <Stack.Navigator initialRouteName="Home">
+        {/* Define a tela 'Home' como parte do navegador de pilha.
+            A propriedade 'name' é o nome da tela, e 'component' especifica qual componente será renderizado. */}
         <Stack.Screen name="Home" component={HomeScreen} />
+        {/* Define a tela 'Details' como outra tela no navegador de pilha.
+            Essa tela pode ser acessada a partir da tela 'Home'. */}
         <Stack.Screen name="Details" component={DetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
+
 ```
 
 ### Passo 2: Criando as Telas
@@ -161,13 +181,24 @@ Agora, vamos criar as duas telas que serão navegadas.
 **HomeScreen.js**
 
 ```javascript
+// Importa todas as funcionalidades da biblioteca React
 import * as React from 'react';
+// Importa os componentes Button, View e Text da biblioteca react-native
+// O Button é usado para criar um botão clicável
+// O View é usado como um contêiner para organizar os elementos na tela
+// O Text é usado para exibir texto na tela
 import { Button, View, Text } from 'react-native';
 
+// Função principal que define o componente HomeScreen
+// O componente HomeScreen recebe 'navigation' como uma prop, que permite a navegação entre as telas
 export default function HomeScreen({ navigation }) {
   return (
+    // O View encapsula os elementos da tela e usa as propriedades de estilo para centralizar o conteúdo
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      {/* O Text exibe "Home Screen" na tela */}
       <Text>Home Screen</Text>
+      {/* O Button cria um botão com o título "Go to Details"
+          Quando o botão é pressionado, a função onPress é chamada, navegando para a tela "Details" */}
       <Button
         title="Go to Details"
         onPress={() => navigation.navigate('Details')}
@@ -175,18 +206,30 @@ export default function HomeScreen({ navigation }) {
     </View>
   );
 }
+
 ```
 
 **DetailsScreen.js**
 
 ```javascript
+// Importa todas as funcionalidades da biblioteca React
 import * as React from 'react';
+// Importa os componentes Button, View e Text da biblioteca react-native
+// O Button é usado para criar um botão clicável
+// O View é usado como um contêiner para organizar os elementos na tela
+// O Text é usado para exibir texto na tela
 import { Button, View, Text } from 'react-native';
 
+// Função principal que define o componente DetailsScreen
+// O componente DetailsScreen recebe 'navigation' como uma prop, que permite a navegação entre as telas
 export default function DetailsScreen({ navigation }) {
   return (
+    // O View encapsula os elementos da tela e usa as propriedades de estilo para centralizar o conteúdo
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      {/* O Text exibe "Details Screen" na tela */}
       <Text>Details Screen</Text>
+      {/* O Button cria um botão com o título "Go to Home"
+          Quando o botão é pressionado, a função onPress é chamada, navegando de volta para a tela "Home" */}
       <Button
         title="Go to Home"
         onPress={() => navigation.navigate('Home')}
@@ -194,6 +237,7 @@ export default function DetailsScreen({ navigation }) {
     </View>
   );
 }
+
 ```
 
 ### Passo 3: Executando o Projeto
@@ -231,24 +275,43 @@ npm install @react-navigation/bottom-tabs
 No arquivo `App.js`, configure o navegador de abas (Tab Navigator):
 
 ```javascript
+// Importa todas as funcionalidades da biblioteca React
 import * as React from 'react';
+// Importa o componente NavigationContainer da biblioteca @react-navigation/native
+// O NavigationContainer gerencia o estado da navegação e é o contêiner que encapsula toda a navegação do app.
 import { NavigationContainer } from '@react-navigation/native';
+// Importa o método createBottomTabNavigator da biblioteca @react-navigation/bottom-tabs
+// O createBottomTabNavigator é usado para criar um navegador de abas (tab navigator) na parte inferior da tela.
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+// Importa o componente HomeScreen do arquivo HomeScreen.js
+// Este componente representa a tela inicial do aplicativo.
 import HomeScreen from './HomeScreen';
+// Importa o componente SettingsScreen do arquivo SettingsScreen.js
+// Este componente representa a tela de configurações do aplicativo.
 import SettingsScreen from './SettingsScreen';
 
+// Cria uma instância do bottom tab navigator usando createBottomTabNavigator
+// O Tab é usado para definir as telas que serão gerenciadas pelo navegador de abas.
 const Tab = createBottomTabNavigator();
 
+// Função principal do aplicativo que será exportada como padrão
 export default function App() {
   return (
+    // O NavigationContainer encapsula todo o aplicativo e fornece o contexto de navegação
     <NavigationContainer>
+      {/* O Tab.Navigator é usado para definir a estrutura de navegação por abas (tabs) na parte inferior da tela */}
       <Tab.Navigator>
+        {/* Define a tela 'Home' como uma das abas do navegador
+            A propriedade 'name' é o nome da aba, e 'component' especifica qual componente será renderizado */}
         <Tab.Screen name="Home" component={HomeScreen} />
+        {/* Define a tela 'Settings' como outra aba do navegador
+            Essa aba será acessível ao lado da aba 'Home' */}
         <Tab.Screen name="Settings" component={SettingsScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
 }
+
 ```
 
 ### Passo 3: Criando as Telas
@@ -258,31 +321,47 @@ Crie as duas telas que serão exibidas nas abas.
 **HomeScreen.js**
 
 ```javascript
+// Importa todas as funcionalidades da biblioteca React
 import * as React from 'react';
+// Importa os componentes View e Text da biblioteca react-native
+// O View é usado como um contêiner para organizar os elementos na tela
+// O Text é usado para exibir texto na tela
 import { View, Text } from 'react-native';
 
+// Função principal que define o componente HomeScreen
 export default function HomeScreen() {
   return (
+    // O View encapsula os elementos da tela e usa as propriedades de estilo para centralizar o conteúdo
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      {/* O Text exibe "Home Screen" na tela */}
       <Text>Home Screen</Text>
     </View>
   );
 }
+
 ```
 
 **SettingsScreen.js**
 
 ```javascript
+// Importa todas as funcionalidades da biblioteca React
 import * as React from 'react';
+// Importa os componentes View e Text da biblioteca react-native
+// O View é usado como um contêiner para organizar os elementos na tela
+// O Text é usado para exibir texto na tela
 import { View, Text } from 'react-native';
 
+// Função principal que define o componente SettingsScreen
 export default function SettingsScreen() {
   return (
+    // O View encapsula os elementos da tela e usa as propriedades de estilo para centralizar o conteúdo
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      {/* O Text exibe "Settings Screen" na tela */}
       <Text>Settings Screen</Text>
     </View>
   );
 }
+
 ```
 
 ### Passo 4: Executando o Projeto
@@ -321,24 +400,40 @@ npm install @react-navigation/drawer
 No arquivo `App.js`, configure o navegador de gaveta (Drawer Navigator):
 
 ```javascript
+// Importa todas as funcionalidades da biblioteca React
 import * as React from 'react';
+// Importa o componente NavigationContainer da biblioteca @react-navigation/native
+// O NavigationContainer gerencia o estado da navegação e é o contêiner que encapsula toda a navegação do app.
 import { NavigationContainer } from '@react-navigation/native';
+// Importa o método createDrawerNavigator da biblioteca @react-navigation/drawer
+// O createDrawerNavigator é usado para criar um navegador do tipo drawer (menu lateral) no app.
 import { createDrawerNavigator } from '@react-navigation/drawer';
+// Importa o componente HomeScreen do arquivo HomeScreen.js
 import HomeScreen from './HomeScreen';
+// Importa o componente ProfileScreen do arquivo ProfileScreen.js
 import ProfileScreen from './ProfileScreen';
 
+// Cria uma instância do drawer navigator usando createDrawerNavigator
+// O Drawer é usado para definir as telas que serão gerenciadas pelo navegador de menu lateral.
 const Drawer = createDrawerNavigator();
 
+// Função principal do aplicativo que será exportada como padrão
 export default function App() {
   return (
+    // O NavigationContainer encapsula todo o aplicativo e fornece o contexto de navegação
     <NavigationContainer>
+      {/* O Drawer.Navigator é usado para definir a estrutura de navegação por menu lateral (drawer) */}
       <Drawer.Navigator initialRouteName="Home">
+        {/* Define a tela 'Home' como uma das opções do menu lateral
+            A propriedade 'name' é o nome da tela, e 'component' especifica qual componente será renderizado */}
         <Drawer.Screen name="Home" component={HomeScreen} />
+        {/* Define a tela 'Profile' como outra opção do menu lateral */}
         <Drawer.Screen name="Profile" component={ProfileScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
 }
+
 ```
 
 ### Passo 3: Criando as Telas
@@ -348,31 +443,47 @@ Crie as duas telas que serão exibidas no Drawer Navigator.
 **HomeScreen.js**
 
 ```javascript
+// Importa todas as funcionalidades da biblioteca React
 import * as React from 'react';
+// Importa os componentes View e Text da biblioteca react-native
+// O View é usado como um contêiner para organizar os elementos na tela
+// O Text é usado para exibir texto na tela
 import { View, Text } from 'react-native';
 
+// Função principal que define o componente HomeScreen
 export default function HomeScreen() {
   return (
+    // O View encapsula os elementos da tela e usa as propriedades de estilo para centralizar o conteúdo
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      {/* O Text exibe "Home Screen" na tela */}
       <Text>Home Screen</Text>
     </View>
   );
 }
+
 ```
 
 **ProfileScreen.js**
 
 ```javascript
+// Importa todas as funcionalidades da biblioteca React
 import * as React from 'react';
+// Importa os componentes View e Text da biblioteca react-native
+// O View é usado como um contêiner para organizar os elementos na tela
+// O Text é usado para exibir texto na tela
 import { View, Text } from 'react-native';
 
+// Função principal que define o componente ProfileScreen
 export default function ProfileScreen() {
   return (
+    // O View encapsula os elementos da tela e usa as propriedades de estilo para centralizar o conteúdo
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      {/* O Text exibe "Profile Screen" na tela */}
       <Text>Profile Screen</Text>
     </View>
   );
 }
+
 ```
 
 ### Passo 4: Executando o Projeto
